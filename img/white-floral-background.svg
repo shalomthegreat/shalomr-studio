@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Swirl pattern -->
+    <g id="swirl">
+      <path d="M0,0 C20,5 40,-15 30,-30 C20,-45 -10,-40 -15,-25 C-20,-10 -10,0 0,0 Z" 
+            fill="white" fill-opacity="0.9"/>
+    </g>
+    
+    <!-- Leaf pattern -->
+    <g id="leaf">
+      <path d="M0,0 C5,-10 15,-15 20,-5 C25,5 15,15 10,10 C5,15 -5,5 0,0 Z" 
+            fill="white" fill-opacity="0.9"/>
+    </g>
+    
+    <!-- Small flower -->
+    <g id="small-flower">
+      <circle cx="0" cy="0" r="3" fill="white" fill-opacity="0.9"/>
+      <circle cx="5" cy="0" r="3" fill="white" fill-opacity="0.9"/>
+      <circle cx="0" cy="5" r="3" fill="white" fill-opacity="0.9"/>
+      <circle cx="-5" cy="0" r="3" fill="white" fill-opacity="0.9"/>
+      <circle cx="0" cy="-5" r="3" fill="white" fill-opacity="0.9"/>
+      <circle cx="0" cy="0" r="2" fill="white"/>
+    </g>
+    
+    <!-- Dot cluster -->
+    <g id="dots">
+      <circle cx="0" cy="0" r="2" fill="white" fill-opacity="0.9"/>
+      <circle cx="5" cy="2" r="1.5" fill="white" fill-opacity="0.9"/>
+      <circle cx="8" cy="5" r="1" fill="white" fill-opacity="0.9"/>
+      <circle cx="10" cy="8" r="0.8" fill="white" fill-opacity="0.9"/>
+      <circle cx="12" cy="12" r="0.6" fill="white" fill-opacity="0.9"/>
+    </g>
+    
+    <!-- Main vine with curls -->
+    <g id="main-vine">
+      <path d="M0,0 C50,-30 100,30 150,-20 C200,-70 250,-20 300,-40" 
+            fill="none" stroke="white" stroke-width="3" stroke-opacity="0.9"/>
+      <path d="M50,-10 C70,-40 90,-20 110,-50" 
+            fill="none" stroke="white" stroke-width="2" stroke-opacity="0.9"/>
+      <path d="M200,-50 C220,-20 240,-40 260,-10" 
+            fill="none" stroke="white" stroke-width="2" stroke-opacity="0.9"/>
+      <use href="#swirl" x="150" y="-20" transform="scale(1.2) rotate(30)"/>
+      <use href="#leaf" x="100" y="10" transform="scale(1.5) rotate(-20)"/>
+      <use href="#leaf" x="250" y="-30" transform="scale(1.3) rotate(40)"/>
+      <use href="#small-flower" x="75" y="-15" transform="scale(1.2)"/>
+      <use href="#small-flower" x="225" y="-25" transform="scale(1.2)"/>
+      <use href="#dots" x="180" y="-40"/>
+      <use href="#dots" x="120" y="5"/>
+    </g>
+    
+    <!-- Secondary vine -->
+    <g id="secondary-vine">
+      <path d="M0,0 C30,40 80,20 120,60 C160,100 200,60 240,80" 
+            fill="none" stroke="white" stroke-width="2.5" stroke-opacity="0.7"/>
+      <path d="M40,20 C60,40 80,30 100,50" 
+            fill="none" stroke="white" stroke-width="1.8" stroke-opacity="0.7"/>
+      <path d="M160,70 C180,50 200,60 220,40" 
+            fill="none" stroke="white" stroke-width="1.8" stroke-opacity="0.7"/>
+      <use href="#swirl" x="120" y="60" transform="scale(1) rotate(120)" opacity="0.7"/>
+      <use href="#leaf" x="80" y="30" transform="scale(1.2) rotate(60)" opacity="0.7"/>
+      <use href="#leaf" x="200" y="65" transform="scale(1) rotate(-30)" opacity="0.7"/>
+      <use href="#small-flower" x="60" y="35" transform="scale(0.9)" opacity="0.7"/>
+      <use href="#small-flower" x="180" y="55" transform="scale(0.9)" opacity="0.7"/>
+      <use href="#dots" x="140" y="75" opacity="0.7"/>
+      <use href="#dots" x="100" y="45" opacity="0.7"/>
+    </g>
+    
+    <!-- Background vine (more transparent) -->
+    <g id="bg-vine">
+      <path d="M0,0 C40,30 90,0 130,40 C170,80 210,40 250,60" 
+            fill="none" stroke="white" stroke-width="3" stroke-opacity="0.3"/>
+      <path d="M50,10 C70,30 90,20 110,40" 
+            fill="none" stroke="white" stroke-width="2" stroke-opacity="0.3"/>
+      <path d="M170,50 C190,30 210,40 230,20" 
+            fill="none" stroke="white" stroke-width="2" stroke-opacity="0.3"/>
+      <use href="#swirl" x="130" y="40" transform="scale(1.4) rotate(90)" opacity="0.3"/>
+      <use href="#leaf" x="90" y="15" transform="scale(1.7) rotate(30)" opacity="0.3"/>
+      <use href="#leaf" x="210" y="45" transform="scale(1.5) rotate(-60)" opacity="0.3"/>
+      <use href="#small-flower" x="70" y="25" transform="scale(1.4)" opacity="0.3"/>
+      <use href="#small-flower" x="190" y="35" transform="scale(1.4)" opacity="0.3"/>
+      <use href="#dots" x="150" y="55" opacity="0.3"/>
+      <use href="#dots" x="110" y="25" opacity="0.3"/>
+    </g>
+  </defs>
+  
+  <!-- Left side design -->
+  <g class="left-side">
+    <!-- Background elements (more transparent) -->
+    <use href="#bg-vine" x="50" y="100" transform="scale(1.2) rotate(-10)"/>
+    <use href="#bg-vine" x="20" y="300" transform="scale(1.1) rotate(10)"/>
+    <use href="#bg-vine" x="40" y="500" transform="scale(1.3) rotate(-5)"/>
+    
+    <!-- Secondary elements (medium transparency) -->
+    <use href="#secondary-vine" x="30" y="150" transform="scale(1.1) rotate(-15)"/>
+    <use href="#secondary-vine" x="10" y="350" transform="scale(1) rotate(5)"/>
+    <use href="#secondary-vine" x="25" y="550" transform="scale(1.2) rotate(-10)"/>
+    
+    <!-- Foreground elements (least transparent) -->
+    <use href="#main-vine" x="0" y="200" transform="scale(0.9) rotate(-20)"/>
+    <use href="#main-vine" x="-20" y="400" transform="scale(0.8) rotate(0)"/>
+    <use href="#main-vine" x="0" y="600" transform="scale(0.9) rotate(-15)"/>
+    
+    <!-- Additional decorative elements -->
+    <use href="#swirl" x="100" y="250" transform="scale(2) rotate(45)"/>
+    <use href="#swirl" x="120" y="450" transform="scale(1.8) rotate(60)"/>
+    <use href="#small-flower" x="150" y="300" transform="scale(1.5)"/>
+    <use href="#small-flower" x="130" y="500" transform="scale(1.7)"/>
+    <use href="#dots" x="180" y="350" transform="scale(1.5)"/>
+    <use href="#dots" x="160" y="550" transform="scale(1.3)"/>
+  </g>
+  
+  <!-- Right side design -->
+  <g class="right-side">
+    <!-- Background elements (more transparent) -->
+    <use href="#bg-vine" x="1150" y="100" transform="scale(-1.2, 1.2) rotate(-10)"/>
+    <use href="#bg-vine" x="1180" y="300" transform="scale(-1.1, 1.1) rotate(10)"/>
+    <use href="#bg-vine" x="1160" y="500" transform="scale(-1.3, 1.3) rotate(-5)"/>
+    
+    <!-- Secondary elements (medium transparency) -->
+    <use href="#secondary-vine" x="1170" y="150" transform="scale(-1.1, 1.1) rotate(-15)"/>
+    <use href="#secondary-vine" x="1190" y="350" transform="scale(-1, 1) rotate(5)"/>
+    <use href="#secondary-vine" x="1175" y="550" transform="scale(-1.2, 1.2) rotate(-10)"/>
+    
+    <!-- Foreground elements (least transparent) -->
+    <use href="#main-vine" x="1200" y="200" transform="scale(-0.9, 0.9) rotate(-20)"/>
+    <use href="#main-vine" x="1220" y="400" transform="scale(-0.8, 0.8) rotate(0)"/>
+    <use href="#main-vine" x="1200" y="600" transform="scale(-0.9, 0.9) rotate(-15)"/>
+    
+    <!-- Additional decorative elements -->
+    <use href="#swirl" x="1100" y="250" transform="scale(2) rotate(-45)"/>
+    <use href="#swirl" x="1080" y="450" transform="scale(1.8) rotate(-60)"/>
+    <use href="#small-flower" x="1050" y="300" transform="scale(1.5)"/>
+    <use href="#small-flower" x="1070" y="500" transform="scale(1.7)"/>
+    <use href="#dots" x="1020" y="350" transform="scale(1.5)"/>
+    <use href="#dots" x="1040" y="550" transform="scale(1.3)"/>
+  </g>
+</svg>

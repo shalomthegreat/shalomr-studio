@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <a href="https://www.freepik.com/icon/big_16533365">Icon by howcolour</a> -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet" />
+    <title>Digital Landscapes - Share Your Voice. Make Your Mark.</title>
+    <style>
+      :root {
+        --color-purple: #4a1d66;
+        --color-navy: #1a2b4d;
+        --color-accent-light: #c17ff3;
+        --color-accent-light-rgb: 193, 127, 243;
+        --color-accent-dark: #28093b;
+        --color-glow: rgb(0, 212, 255);
+        /* linear-gradient(135deg, rgb(46 18 63) 0%, rgb(9 28 67) 100%) */
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Quicksand", sans-serif;
+      }
+
+      .hero {
+        min-height: 70vh;
+        max-height: 70vh;
+        background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-navy) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+      }
+
+      .logo {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        background: url("img/temp_logo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .logo-text {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .sparkle {
+        pointer-events: none;
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        background: var(--color-glow);
+        border-radius: 50%;
+        animation: sparkle-fade 1s ease-out forwards;
+        z-index: 9999;
+      }
+
+      @keyframes sparkle-fade {
+        0% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0) rotate(180deg);
+          opacity: 0;
+        }
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 1200px;
+      }
+
+      .hero-title {
+        color: white;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        font-family: "Orbitron", sans-serif;
+        font-weight: 400;
+        max-width: 800px;
+      }
+
+      .hero-subtitle {
+        color: var(--color-accent-light);
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        font-weight: 300;
+        font-family: "Quicksand", sans-serif;
+      }
+
+      .services {
+        max-height: 90vh;
+        background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-accent-dark) 100%);
+        position: relative;
+        overflow: hidden;
+        padding: 4rem 0 4rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .wave-bg {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 60%;
+        background: url("img/temp_logo.png") repeat;
+        background-size: 100px 100px;
+        -webkit-mask: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.6));
+        mask: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.6));
+        animation: logoWave 3s linear infinite;
+        opacity: 0.1;
+        filter: hue-rotate(220deg) brightness(2);
+      }
+
+      @keyframes logoWave {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: -100px -100px;
+        }
+      }
+
+      .wave-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("img/temp_logo.png") repeat;
+        background-size: 50px 50px;
+        -webkit-mask: linear-gradient(45deg, transparent, rgba(0, 0, 0, 0.8));
+        mask: linear-gradient(45deg, transparent, rgba(0, 0, 0, 0.8));
+        animation: logoWaveSmall 5s linear infinite reverse;
+        filter: hue-rotate(180deg) brightness(1.5);
+      }
+
+      @keyframes logoWaveSmall {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: -50px -50px;
+        }
+      }
+
+      .services-content {
+        max-width: 800px;
+        margin-left: 10%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .services-title {
+        color: white;
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(2rem, 6vw, 4rem);
+        font-weight: 400;
+        text-transform: uppercase;
+        line-height: 1.2;
+        margin-bottom: 2rem;
+      }
+
+      .services-list {
+        list-style: none;
+        color: white;
+        font-family: "Quicksand", sans-serif;
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      .book-display {
+        position: relative;
+        width: 45%;
+        height: 450px;
+        overflow: hidden;
+        margin-right: 3%;
+        display: flex;
+        align-items: center;
+        mask: linear-gradient(90deg, transparent, #000 30%, #000 80%, transparent);
+        -webkit-mask: linear-gradient(90deg, transparent, #000 30%, #000 80%, transparent);
+        -webkit-perspective: 2000px;
+        perspective: 2000px;
+      }
+
+      .book-cover {
+        width: 300px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        -webkit-transform: rotateY(20deg);
+        transform: rotateY(20deg);
+      }
+
+      .book-cover:hover {
+        -webkit-transform: rotateY(0deg) translateY(-20px) scale(1.1);
+        transform: rotateY(0deg) translateY(-20px) scale(1.1);
+        -webkit-filter: brightness(1.2) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.3));
+        filter: brightness(1.2) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.3));
+        z-index: 1;
+      }
+
+      .book-carousel {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        animation: scrollBooks 30s linear infinite;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+
+      .book-carousel:hover {
+        animation-play-state: paused;
+      }
+
+      .book-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          -webkit-transform: translateY(0) rotateY(20deg);
+          transform: translateY(0) rotateY(20deg);
+        }
+        50% {
+          -webkit-transform: translateY(-10px) rotateY(20deg);
+          transform: translateY(-10px) rotateY(20deg);
+        }
+      }
+
+      @-webkit-keyframes float {
+        0%,
+        100% {
+          -webkit-transform: translateY(0) rotateY(20deg);
+          transform: translateY(0) rotateY(20deg);
+        }
+        50% {
+          -webkit-transform: translateY(-10px) rotateY(20deg);
+          transform: translateY(-10px) rotateY(20deg);
+        }
+      }
+
+      @keyframes scrollBooks {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(calc(-300px * 3 - 2rem * 3));
+        }
+      }
+
+      /* Apply floating animation to each book with different delays */
+      .book-cover:nth-child(1) {
+        animation: float 3s ease-in-out infinite;
+      }
+      .book-cover:nth-child(2) {
+        animation: float 3s ease-in-out infinite 0.5s;
+      }
+      .book-cover:nth-child(3) {
+        animation: float 3s ease-in-out infinite 1s;
+      }
+      .book-cover:nth-child(4) {
+        animation: float 3s ease-in-out infinite 1.5s;
+      }
+      .book-cover:nth-child(5) {
+        animation: float 3s ease-in-out infinite 2s;
+      }
+      .book-cover:nth-child(6) {
+        animation: float 3s ease-in-out infinite 2.5s;
+      }
+
+      .options {
+        background: var(--color-navy);
+        padding: 6rem 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+      }
+
+      .options-container {
+        display: flex;
+        gap: 2rem;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .option-box {
+        flex: 1;
+        background: rgba(var(--color-accent-light-rgb), 0.17);
+        border: 2px solid var(--color-accent-light);
+        border-radius: 20px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .option-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(193, 127, 243, 0.2);
+      }
+
+      .option-image {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5rem;
+        border-radius: 15px;
+        object-fit: cover;
+      }
+
+      .option-title {
+        color: var(--color-accent-light);
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .option-text {
+        color: white;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        /* Hero Section Mobile */
+        .hero {
+          padding: 1rem;
+        }
+
+        .logo {
+          top: 1rem;
+          left: 1rem;
+        }
+
+        .logo-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .logo-text {
+          font-size: 1.2rem;
+        }
+
+        /* Services Section Mobile */
+        .services {
+          flex-direction: column;
+          padding: 3rem 1.5rem;
+        }
+
+        .services-content {
+          text-align: center;
+          margin: 10% 0;
+        }
+
+        /* Book Display Mobile */
+        .book-display {
+          width: 100%;
+          height: 300px;
+          margin-top: 3rem;
+        }
+
+        .book-cover {
+          width: 200px;
+          height: 300px;
+        }
+
+        .book-cover:hover {
+          transform: translateY(-10px) rotateY(-10deg) rotateX(5deg) scale(1.05);
+        }
+
+        @keyframes scrollBooks {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-200px * 3 - 2rem * 3));
+          }
+        }
+
+        .options-container {
+          flex-direction: column;
+          padding: 0 1rem;
+        }
+
+        .option-box {
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="shooting-star"></div>
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <div class="logo-text">SHALOM R.</div>
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">Digital Landscapes</h1>
+        <h2 class="hero-subtitle">Share Your Voice. Make Your Mark.</h2>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="wave-bg"></div>
+      <div class="services-content">
+        <h2 class="services-title">
+          Consulting<br />
+          Services
+        </h2>
+        <ul class="services-list">
+          <li>Website Upgrades</li>
+          <li>Second Opinion Quotes</li>
+          <li>A.I. Integration</li>
+          <li>Web Publishing</li>
+        </ul>
+      </div>
+      <div class="book-display">
+        <div class="book-carousel">
+          <div class="book-cover">
+            <img src="img/book1.png" alt="Book Cover 1" />
+          </div>
+          <div class="book-cover">
+            <img src="img/book2.png" alt="Book Cover 2" />
+          </div>
+          <div class="book-cover">
+            <img src="img/book3.png" alt="Book Cover 3" />
+          </div>
+          <!-- Duplicate books for seamless scrolling -->
+          <div class="book-cover">
+            <img src="img/book1.png" alt="Book Cover 1" />
+          </div>
+          <div class="book-cover">
+            <img src="img/book2.png" alt="Book Cover 2" />
+          </div>
+          <div class="book-cover">
+            <img src="img/book3.png" alt="Book Cover 3" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="options">
+      <div class="options-container">
+        <div class="option-box">
+          <img src="img/upgrade.jpg" alt="Upgrade" class="option-image" />
+          <h3 class="option-title">Upgrade</h3>
+          <p class="option-text">
+            Transform your existing website with modern design principles and enhanced functionality. We'll help you stay current and competitive in
+            today's digital landscape.
+          </p>
+        </div>
+
+        <div class="option-box">
+          <img src="img/publish.jpg" alt="Publish" class="option-image" />
+          <h3 class="option-title">Publish</h3>
+          <p class="option-text">
+            Turn your content into professionally published works. From e-books to web content, we'll help you reach your audience effectively.
+          </p>
+        </div>
+
+        <div class="option-box">
+          <img src="img/consult.jpg" alt="Consult" class="option-image" />
+          <h3 class="option-title">Consult</h3>
+          <p class="option-text">
+            Get expert advice on your digital strategy. Our consultation services provide insights and solutions tailored to your specific needs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const heroSection = document.querySelector(".hero");
+
+      document.addEventListener("mousemove", function (e) {
+        // Check if mouse is within hero section bounds
+        const heroRect = heroSection.getBoundingClientRect();
+        const isInHero = e.clientY >= heroRect.top && e.clientY <= heroRect.bottom && e.clientX >= heroRect.left && e.clientX <= heroRect.right;
+
+        if (isInHero) {
+          // Create multiple sparkles per movement
+          for (let i = 0; i < 3; i++) {
+            if (Math.random() > 0.5) {
+              createSparkle(e.clientX, e.clientY);
+            }
+          }
+        }
+      });
+
+      function createSparkle(x, y) {
+        const sparkle = document.createElement("div");
+        sparkle.className = "sparkle";
+
+        // Random position offset
+        const offset = 10;
+        x += Math.random() * offset - offset / 2;
+        y += Math.random() * offset - offset / 2;
+
+        sparkle.style.left = x + "px";
+        sparkle.style.top = y + "px";
+
+        // Random color variation
+        const hue = Math.random() * 60 - 30; // Variation in hue
+        sparkle.style.filter = `hue-rotate(${hue}deg) brightness(${1 + Math.random()})`;
+
+        document.body.appendChild(sparkle);
+
+        // Remove sparkle after animation
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main Diamond/Consult Symbol -->
+  <path d="M40 10L10 40L40 70L70 40L40 10Z" 
+        fill="white" 
+        fill-opacity="0.1" 
+        stroke="white" 
+        stroke-width="1.5"
+        stroke-linejoin="round">
+    <animateTransform attributeName="transform" 
+                     type="rotate" 
+                     from="0 40 40" 
+                     to="360 40 40" 
+                     dur="180s" 
+                     repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Chat Bubble -->
+  <path d="M30 30H50C51.1046 30 52 30.8954 52 32V45C52 46.1046 51.1046 47 50 47H40L35 52V47C33.8954 47 33 46.1046 33 45V38" 
+        stroke="white" 
+        stroke-width="1.5" 
+        fill="none"/>
+  <circle cx="38" cy="38" r="1.5" fill="white"/>
+  <circle cx="42" cy="38" r="1.5" fill="white"/>
+  
+  <!-- Subtle Grid -->
+  <path d="M40 20L20 40L40 60L60 40L40 20Z" 
+        fill="none" 
+        stroke="white" 
+        stroke-width="1" 
+        stroke-opacity="0.3"
+        stroke-linejoin="round"/>
+</svg>

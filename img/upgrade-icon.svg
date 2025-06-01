@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main Diamond/Upgrade Symbol -->
+  <path d="M40 10L10 40L40 70L70 40L40 10Z" 
+        fill="white" 
+        fill-opacity="0.1" 
+        stroke="white" 
+        stroke-width="1.5"
+        stroke-linejoin="round">
+    <animateTransform attributeName="transform" 
+                     type="rotate" 
+                     from="0 40 40" 
+                     to="360 40 40" 
+                     dur="120s" 
+                     repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Arrow Up -->
+  <path d="M40 25V55M40 25L30 35M40 25L50 35" 
+        stroke="white" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+  
+  <!-- Subtle Grid -->
+  <path d="M40 20L20 40L40 60L60 40L40 20Z" 
+        fill="none" 
+        stroke="white" 
+        stroke-width="1" 
+        stroke-opacity="0.3"
+        stroke-linejoin="round"/>
+</svg>

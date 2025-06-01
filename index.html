@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <a href="https://www.freepik.com/icon/big_16533365">Icon by howcolour</a> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=EB+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Digital Landscapes - Share Your Voice. Make Your Mark.</title>
+    <style>
+      :root {
+        /* Base colors - these will be overridden by section-specific themes */
+        --color-primary: #1a2b4d;
+        --color-title: #69d7ff;
+        --color-navy: #0d1a33;
+        --color-accent-light: #7ba7e0;
+        --color-accent-light-rgb: 123, 167, 224;
+        --color-accent-dark: #0a1426;
+        --color-glow: rgb(100, 200, 255);
+        --color-background: #f0f5fa;
+        --color-card: rgb(255 255 255 / 20%);
+        --color-card-hover: #a4b4c5;
+        --color-text: #0d1a33;
+        --transition: all 0.3s ease;
+      }
+
+      /* Theme-specific overrides */
+      body[data-theme="multicolor"] .hero,
+      body:not([data-theme]) .hero {
+        --color-primary: #1a2b4d;
+        --color-navy: #0d1a33;
+        --color-accent-light: #7ba7e0;
+        --color-accent-light-rgb: 123, 167, 224;
+        --color-accent-dark: #0a1426;
+        --color-glow: rgb(100, 200, 255);
+        --color-background: #f0f5fa;
+        --color-card-hover: #a4b4c5;
+      }
+
+      body[data-theme="multicolor"] .services,
+      body:not([data-theme]) .services {
+        --color-primary: #5a1d6e;
+        --color-navy: #2a1b4d;
+        --color-accent-light: #d18ff5;
+        --color-accent-light-rgb: 209, 143, 245;
+        --color-accent-dark: #3a0b4b;
+        --color-glow: rgb(255, 200, 255);
+        --color-background: #faf5f0;
+        --color-card-hover: #cdb9d4;
+      }
+
+      body[data-theme="multicolor"] .options,
+      body:not([data-theme]) .options {
+        --color-primary: #1a5f5e;
+        --color-navy: #0d3d3c;
+        --color-accent-light: #5fc0bd;
+        --color-accent-light-rgb: 95, 192, 189;
+        --color-accent-dark: #0a2f2e;
+        --color-glow: rgb(0, 255, 234);
+        --color-background: #f0f7f7;
+        --color-card-hover: #abcac8;
+      }
+
+      /* Blue Theme */
+      body[data-theme="blue"] {
+        --color-primary: #1a2b4d;
+        --color-navy: #0d1a33;
+        --color-accent-light: #7ba7e0;
+        --color-accent-light-rgb: 123, 167, 224;
+        --color-accent-dark: #0a1426;
+        --color-glow: rgb(100, 200, 255);
+        --color-background: #f0f5fa;
+        --color-card-hover: #a4b4c5;
+      }
+
+      body[data-theme="purple"] {
+        --color-primary: #5a1d6e;
+        --color-title: #c68cfd;
+        --color-navy: #2a1b4d;
+        --color-accent-light: #b87dd9;
+        --color-accent-light-rgb: 209, 143, 245;
+        --color-accent-dark: #3a0b4b;
+        --color-glow: rgb(255, 200, 255);
+        --color-background: #faf5f0;
+        --color-card-hover: #cdb9d4;
+      }
+
+      body[data-theme="teal"] {
+        --color-primary: #1a5f5e;
+        --color-title: #69ffbf;
+        --color-navy: #052626;
+        --color-accent-light: #5fc0bd;
+        --color-accent-light-rgb: 95, 192, 189;
+        --color-accent-dark: #0a2f2e;
+        --color-glow: rgb(0, 255, 234);
+        --color-background: #f0f7f7;
+        --color-card-hover: #abcac8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: var(--transition);
+      }
+
+      body {
+        font-family: "EB Garamond", serif;
+        background-color: var(--color-background);
+        color: var(--color-text);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+
+      .theme-switcher {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 8px;
+        border-radius: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+      }
+
+      .theme-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 16px;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .theme-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+
+      .theme-btn:hover::before {
+        opacity: 1;
+      }
+
+      .theme-btn i {
+        position: relative;
+        z-index: 1;
+      }
+
+      .theme-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .theme-btn.active {
+        transform: translateY(-2px) scale(1.1);
+        box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-accent-light), 0 4px 15px var(--color-glow);
+      }
+
+      .theme-multicolor {
+        background: linear-gradient(135deg, #5a1d6e 0%, #1a2b4d 50%, #1a5f5e 100%);
+      }
+      .theme-purple {
+        background: linear-gradient(135deg, #5a1d6e, #8a2be2);
+      }
+      .theme-blue {
+        background: linear-gradient(135deg, #1a2b4d, #3a6ea5);
+      }
+      .theme-teal {
+        background: linear-gradient(135deg, #1a5f5e, #2aa8a5);
+      }
+
+      .hero {
+        height: 70vh;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-navy) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+        color: white;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+      }
+
+      .logo {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        z-index: 10;
+        transform: scale(1.2);
+        transform-origin: left center;
+      }
+
+      .logo-icon {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        opacity: 0.3;
+        background: url(img/logo.svg) center / contain no-repeat;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover .logo-icon {
+        transform: rotate(90deg);
+      }
+
+      .logo-text {
+        color: white;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .logo:hover .logo-text {
+        letter-spacing: 2px;
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 1200px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-title {
+        color: var(--color-title);
+        text-shadow: 0px 2px 10px black;
+        font-family: "EB Garamond";
+        font-family: math;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        letter-spacing: 7px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        font-weight: 400;
+        line-height: 1.2;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        font-weight: 300;
+        font-family: "Quicksand", sans-serif;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: var(--color-accent);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        letter-spacing: 1px;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .services {
+        max-height: 90vh;
+        background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-accent-dark) 100%);
+        position: relative;
+        overflow: hidden;
+        padding: 4rem 0 4rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      section.services:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 50px;
+        width: 100vw;
+        background: linear-gradient(180deg, #ffffff24, transparent);
+      }
+
+      .section-title {
+        text-align: center;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--color-primary);
+      }
+
+      .services-content {
+        max-width: 800px;
+        margin-left: 10%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .services-title {
+        color: white;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2rem, 6vw, 4rem);
+        font-weight: 400;
+        text-transform: uppercase;
+        line-height: 1.2;
+        margin-bottom: 2rem;
+      }
+
+      .options {
+        padding: 6rem 2rem;
+        background: var(--color-background);
+        color: var(--color-navy);
+      }
+
+      .options-container {
+        display: flex;
+        gap: 2rem;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .option-box {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+        background: var(--color-card);
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+      }
+
+      .option-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        background: var(--color-card-hover);
+      }
+
+      .option-box img {
+        width: 100%;
+        margin-bottom: 1em;
+      }
+
+      .option-box:hover img {
+        rotate: 5deg;
+        scale: 1.1;
+      }
+
+      .option-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .option-text {
+        flex-grow: 1;
+        color: var(--color-text);
+        font-family: "EB Garamond", serif;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      footer {
+        background-color: var(--color-primary);
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        font-family: "EB Garamond", serif;
+      }
+
+      .sparkle {
+        position: fixed;
+        background: white;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1000;
+        opacity: 0.8;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+        will-change: transform, opacity;
+        transform: translateZ(0);
+      }
+
+      @keyframes sparkle-fade {
+        0% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0) rotate(180deg);
+          opacity: 0;
+        }
+      }
+
+      /* These styles now apply to all screen sizes */
+      .services {
+        flex-direction: column;
+        padding: 4rem 2rem;
+        max-height: none;
+      }
+
+      .services-content {
+        margin: 0 auto 3rem;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          padding: 1rem;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .services {
+          padding: 3rem 1rem;
+        }
+
+        .options-container {
+          flex-direction: column;
+          padding: 0 1rem;
+        }
+
+        .option-box {
+          width: 100%;
+          margin-bottom: 2rem;
+        }
+      }
+
+      .options-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        gap: 1.5rem;
+      }
+
+      .option {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem 1.5rem;
+        border-radius: 15px;
+        flex: 1;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgb(255 255 255 / 75%);
+      }
+
+      .option:hover {
+        transform: translateY(-8px) scale(1.02);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .option-icon {
+        width: 80px;
+        height: 80px;
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+        transition: all 0.5s ease;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .option-icon::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--color-accent-light), var(--color-primary));
+        border-radius: 20px;
+        transform: rotate(45deg);
+        transition: all 0.5s ease;
+        z-index: 0;
+      }
+
+      .option-icon i {
+        position: relative;
+        z-index: 1;
+        transition: transform 0.3s ease;
+      }
+
+      .option:hover .option-icon::before {
+        transform: rotate(0deg) scale(1.1);
+        box-shadow: 0 0 20px var(--color-glow);
+        box-shadow: -3px 4px 20px 3px var(--color-glow);
+        border: 1px solid var(--color-accent-light);
+      }
+
+      .option:hover .option-icon i {
+        transform: scale(1.2);
+      }
+
+      .option::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, var(--color-accent-light), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .option:hover::after {
+        opacity: 1;
+      }
+
+      .book-link {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background: var(--color-accent-light);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: 500;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .book-link:hover {
+        background: var(--color-primary);
+      }
+
+      /* Mountain Divider */
+      .mountain-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 15vh;
+        min-height: 120px;
+        overflow: hidden;
+        z-index: 10;
+        pointer-events: none;
+        background-color: transparent !important;
+      }
+
+      .mountain-divider img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center bottom;
+        filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.05));
+        opacity: 0.95;
+        background-color: transparent !important;
+        animation: mountain-glow 8s ease-in-out infinite alternate;
+      }
+
+      /* Mountain animation keyframes */
+      @keyframes mountain-glow {
+        0% {
+          filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.05));
+          opacity: 0.92;
+          transform: scale(1) translateY(0);
+        }
+        50% {
+          filter: drop-shadow(0 -3px 6px rgba(120, 160, 255, 0.12));
+          opacity: 0.98;
+          transform: scale(1.015) translateY(3px);
+        }
+        100% {
+          filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.05));
+          opacity: 0.95;
+          transform: scale(1.01) translateY(0px);
+        }
+      }
+
+      .mountain-divider:hover img {
+        opacity: 1;
+      }
+
+      @media (max-width: 1024px) {
+        .mountain-divider {
+          height: 10vh;
+          min-height: 80px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mountain-divider {
+          height: 8vh;
+          min-height: 60px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .mountain-divider {
+          height: 6vh;
+          min-height: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="theme-switcher">
+      <button class="theme-btn theme-multicolor active" data-theme="multicolor" title="Multicolor Theme">
+        <i class="fas fa-palette"></i>
+      </button>
+      <button class="theme-btn theme-purple" data-theme="purple" title="Purple Theme">
+        <i class="fas fa-gem"></i>
+      </button>
+      <button class="theme-btn theme-blue" data-theme="blue" title="Blue Theme">
+        <i class="fas fa-water"></i>
+      </button>
+      <button class="theme-btn theme-teal" data-theme="teal" title="Teal Theme">
+        <i class="fas fa-leaf"></i>
+      </button>
+    </div>
+
+    <section class="hero">
+      <div class="logo">
+        <div class="logo-text">SHALOM R.</div>
+      </div>
+      <div class="logo-icon"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Digital Landscapes</h1>
+        <h2 class="hero-subtitle">Share Your Voice. Make Your Mark.</h2>
+      </div>
+      <div class="mountain-divider">
+        <img src="img/mountain-range.svg" alt="Mountain range divider" />
+      </div>
+    </section>
+
+    <section class="options">
+      <div class="options-container">
+        <div class="option-box">
+          <img
+            src="img/site1.png"
+            alt="Rebuilding Hope: Solving American Homelessness through Work, Unity, and Innovation; by Robert Grothe. Available on Amazon." />
+          <h3 class="option-title">"Digital Landscapes helped me modernize my website and reach more customers!"</h3>
+          <p class="option-text">- Emily A.</p>
+          <a href="https://ourjourney.org" class="book-link" target="_blank" rel="noopener noreferrer">View Website</a>
+        </div>
+
+        <div class="option-box">
+          <img
+            src="img/book1.png"
+            alt="Rebuilding Hope: Solving American Homelessness through Work, Unity, and Innovation; by Robert Grothe. Available on Amazon." />
+          <h3 class="option-title">"Shalom's design services helped me create a wonderful cover for my book!"</h3>
+          <p class="option-text">- Robert G.</p>
+          <a href="https://a.co/d/dgtUL2y" class="book-link" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+        </div>
+
+        <div class="option-box">
+          <img src="img/book3.png" alt="Overcoming Cancer, by Stephanie Stolba. Available on Amazon." />
+          <h3 class="option-title">"I was able to publish my e-book thanks to Shalom's expert guidance!"</h3>
+          <p class="option-text">- Stephanie S.</p>
+          <a href="https://a.co/d/cqrjBVn" class="book-link" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="services-content">
+        <h2 class="services-title">
+          Consulting<br />
+          Services
+        </h2>
+        <div class="options-container">
+          <div class="option" id="upgrade">
+            <div class="option-icon">
+              <i class="fas fa-arrow-up"></i>
+            </div>
+            <h3>Upgrade</h3>
+            <p>Enhance your existing website with modern features and improved performance.</p>
+          </div>
+          <div class="option" id="publish">
+            <div class="option-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <h3>Publish</h3>
+            <p>Launch your new website with our comprehensive publishing services.</p>
+          </div>
+          <div class="option" id="consult">
+            <div class="option-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>Consult</h3>
+            <p>Get expert advice on your web strategy and implementation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal for Book Previews -->
+    <div id="bookModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="iframe-container">
+          <iframe id="bookIframe" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Digital Landscapes. All rights reserved.</p>
+    </footer>
+
+    <style>
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: translate(var(--tx, 0), var(--ty, 0)) scale(0.5);
+        }
+        50% {
+          opacity: 0.8;
+          transform: translate(var(--tx, 0), var(--ty, 0)) scale(1);
+        }
+      }
+
+      .twinkle {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translateZ(0);
+        will-change: transform, opacity;
+        opacity: 0.3;
+        width: 4px;
+        height: 4px;
+        animation: twinkle 2s infinite ease-in-out;
+      }
+    </style>
+
+    <script>
+      // Book Modal Functionality
+      const modal = document.getElementById("bookModal");
+      const modalIframe = document.getElementById("bookIframe");
+      const closeBtn = document.querySelector(".close-modal");
+      const bookBoxes = document.querySelectorAll(".option-box[data-book-url]");
+
+      // Open modal with book preview
+      bookBoxes.forEach((box) => {
+        box.addEventListener("click", (e) => {
+          // Don't open modal if clicking on the Amazon link
+          if (e.target.closest("a")) {
+            e.stopPropagation();
+            return;
+          }
+
+          const bookUrl = box.getAttribute("data-book-url");
+          modalIframe.src = bookUrl;
+          modal.classList.add("show");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      // Close modal
+      function closeModal() {
+        modal.classList.remove("show");
+        modalIframe.src = "";
+        document.body.style.overflow = "auto";
+      }
+
+      // Close when clicking the X button
+      closeBtn.addEventListener("click", closeModal);
+
+      // Close when clicking outside the modal content
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close with Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("show")) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const heroSection = document.querySelector(".hero");
+        if (!heroSection) return;
+
+        const twinkleCount = 30;
+        const heroRect = heroSection.getBoundingClientRect();
+
+        // Create twinkles
+        function createTwinkles() {
+          // Clear existing twinkles
+          document.querySelectorAll(".twinkle").forEach((el) => el.remove());
+
+          // Create new twinkles
+          for (let i = 0; i < twinkleCount; i++) {
+            createTwinkle();
+          }
+        }
+
+        function createTwinkle() {
+          const twinkle = document.createElement("div");
+          twinkle.className = "twinkle";
+
+          // Random position within hero section
+          const x = Math.random() * 100;
+          const y = Math.random() * 100;
+
+          // Random movement range
+          const moveX = (Math.random() - 0.5) * 10; // -5px to 5px
+          const moveY = (Math.random() - 0.5) * 10;
+
+          // Apply styles
+          twinkle.style.setProperty("left", `${x}%`);
+          twinkle.style.setProperty("top", `${y}%`);
+          twinkle.style.setProperty("--tx", `${moveX}px`);
+          twinkle.style.setProperty("--ty", `${moveY}px`);
+          twinkle.style.width = `${2 + Math.random() * 3}px`;
+          twinkle.style.height = twinkle.style.width;
+          twinkle.style.animationDuration = `${1 + Math.random() * 2}s`;
+          twinkle.style.animationDelay = `${Math.random() * 2}s`;
+
+          heroSection.appendChild(twinkle);
+        }
+
+        // Initialize twinkles
+        createTwinkles();
+
+        // Recreate twinkles on resize
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(createTwinkles, 100);
+        });
+
+        // Theme switcher functionality
+        const themeBtns = document.querySelectorAll(".theme-btn");
+
+        function applyTheme(theme) {
+          // Update the data-theme attribute on the body
+          if (theme === "multicolor") {
+            document.body.removeAttribute("data-theme");
+          } else {
+            document.body.setAttribute("data-theme", theme);
+          }
+
+          // Update active button
+          themeBtns.forEach((btn) => {
+            btn.classList.toggle("active", btn.getAttribute("data-theme") === theme);
+          });
+
+          // Save to localStorage
+          localStorage.setItem("theme", theme);
+
+          // Force a reflow to ensure smooth transition
+          document.body.offsetHeight;
+        }
+
+        // Set up click handlers
+        themeBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const theme = btn.getAttribute("data-theme");
+            applyTheme(theme);
+          });
+        });
+
+        // Load saved theme or default to multicolor
+        const savedTheme = localStorage.getItem("theme") || "multicolor";
+        applyTheme(savedTheme);
+      });
+    </script>
+  </body>
+</html>

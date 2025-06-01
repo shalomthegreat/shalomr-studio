@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" style="background-color: transparent;">
+  <style>
+    .distant-mountains { animation: float-distant 4s ease-in-out infinite alternate; }
+    .mid-mountains { animation: float-mid 4s ease-in-out infinite alternate-reverse; }
+    .foreground-mountains { animation: none; } /* Keeping foreground stationary */
+    .peak { animation: float-peak 2s ease-in-out infinite alternate; }
+    
+    @keyframes float-distant {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(5px); }
+    }
+    
+    @keyframes float-mid {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(3px); }
+    }
+    
+    @keyframes float-peak {
+      0% { transform: translateY(9px); opacity: 0.15; }
+      50% { opacity: 0.22; }
+      100% { transform: translateY(-9px); opacity: 0.15; }
+    }
+  </style>
+  <defs>
+    <!-- Distant mountains with transparency -->
+    <linearGradient id="distantMountains" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0e8ff" stop-opacity="0" />
+      <stop offset="70%" stop-color="#d0e0ff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#c8d6ff" stop-opacity="0.05" />
+    </linearGradient>
+    
+    <!-- Middle range with transparency -->
+    <linearGradient id="midMountains" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d9e2ff" stop-opacity="0" />
+      <stop offset="70%" stop-color="#d0e0ff" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#bfd0ff" stop-opacity="0.07" />
+    </linearGradient>
+    
+    <!-- Foreground mountains with transparency -->
+    <linearGradient id="foregroundMountains" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0e8ff" stop-opacity="0" />
+      <stop offset="70%" stop-color="#d0e0ff" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#c2d2f0" stop-opacity="0.08" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background mountain range - Mt. Rainier inspired -->
+  <path 
+    class="distant-mountains"
+    d="M0,120 L0,90 L60,95 L120,85 L180,95 L240,90 L300,80 L360,85 L420,75 L480,85 L540,80 L600,60 L660,75 L720,65 L780,80 L840,75 L900,85 L960,75 L1020,85 L1080,75 L1140,80 L1200,70 L1260,85 L1320,80 L1380,90 L1440,85 L1440,120 Z" 
+    fill="url(#distantMountains)" 
+  />
+  
+  <!-- Middle mountain range - Mt. Timpanogos inspired -->
+  <path 
+    class="mid-mountains"
+    d="M0,120 L0,100 L40,95 L80,105 L120,95 L160,100 L200,90 L240,100 L280,95 L320,105 L360,90 L400,95 L440,85 L480,95 L520,90 L560,100 L600,85 L640,95 L680,90 L720,80 L760,95 L800,90 L840,100 L880,95 L920,105 L960,90 L1000,100 L1040,95 L1080,105 L1120,90 L1160,100 L1200,85 L1240,95 L1280,90 L1320,100 L1360,95 L1400,105 L1440,100 L1440,120 Z" 
+    fill="url(#midMountains)" 
+  />
+  
+  <!-- Foreground detailed mountain range -->
+  <path 
+    class="foreground-mountains"
+    d="M0,120 L0,110 L20,108 L40,112 L60,106 L80,110 L100,105 L120,110 L140,108 L160,112 L180,105 L200,110 L220,105 L240,112 L260,108 L280,110 L300,105 L320,110 L340,106 L360,110 L380,105 L400,110 L420,108 L440,112 L460,105 L480,110 L500,105 L520,110 L540,108 L560,112 L580,105 L600,110 L620,105 L640,110 L660,108 L680,112 L700,105 L720,110 L740,105 L760,110 L780,108 L800,112 L820,105 L840,110 L860,105 L880,110 L900,108 L920,112 L940,105 L960,110 L980,105 L1000,110 L1020,108 L1040,112 L1060,105 L1080,110 L1100,105 L1120,110 L1140,108 L1160,112 L1180,105 L1200,110 L1220,105 L1240,110 L1260,108 L1280,112 L1300,105 L1320,110 L1340,105 L1360,110 L1380,108 L1400,112 L1420,105 L1440,110 L1440,120 Z" 
+    fill="url(#foregroundMountains)" 
+  />
+  
+  <!-- Mt. Rainier-like prominent peak -->
+  <path 
+    class="peak"
+    d="M580,120 L580,65 L600,60 L620,65 L640,70 L660,75 L680,80 L700,85 L720,120 Z" 
+    fill="url(#distantMountains)" 
+    opacity="0.15"
+  />
+  
+  <!-- Mt. Timpanogos-like prominent peak -->
+  <path 
+    class="peak"
+    d="M1180,120 L1180,75 L1200,70 L1220,75 L1240,80 L1260,85 L1280,90 L1300,120 Z" 
+    fill="url(#distantMountains)" 
+    opacity="0.15"
+  />
+</svg>
