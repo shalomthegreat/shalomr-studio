@@ -79,7 +79,7 @@
 
       body[data-theme="purple"] {
         --color-primary: #5a1d6e;
-        --color-title: #c68cfd;
+        --color-title: #7fffc4;
         --color-navy: #2a1b4d;
         --color-accent-light: #b87dd9;
         --color-accent-light-rgb: 209, 143, 245;
@@ -109,12 +109,17 @@
       }
 
       body {
-        font-family: "EB Garamond", serif;
+        font-family: "Quicksand", sans-serif;
         background-color: var(--color-background);
         color: var(--color-text);
         line-height: 1.6;
         margin: 0;
         padding: 0;
+      }
+
+      h2,
+      h3 {
+        font-family: "EB Garamond", serif;
       }
 
       .theme-switcher {
@@ -256,13 +261,12 @@
       .hero-title {
         color: var(--color-title);
         text-shadow: 0px 2px 10px black;
-        font-family: "EB Garamond";
-        font-family: math;
+        font-family: "Cormorant Garamond", serif;
         font-size: clamp(2.5rem, 8vw, 5rem);
         letter-spacing: 7px;
         margin-bottom: 1.5rem;
         text-transform: uppercase;
-        font-weight: 400;
+        font-weight: 600;
         line-height: 1.2;
       }
 
@@ -382,6 +386,7 @@
 
       .option-box img {
         width: 100%;
+        max-width: 600px;
         margin-bottom: 1em;
       }
 
@@ -433,7 +438,6 @@
         font-size: 2.5rem;
         color: var(--color-primary);
         margin-bottom: 1.5rem;
-        font-family: "EB Garamond", serif;
       }
 
       .contact-description {
@@ -441,7 +445,6 @@
         line-height: 1.8;
         margin-bottom: 2.5rem;
         color: var(--color-text);
-        font-family: "EB Garamond", serif;
       }
 
       .contact-details {
@@ -689,7 +692,7 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: 1014px) {
         .contact-container {
           flex-direction: column;
         }
@@ -704,7 +707,6 @@
         color: white;
         text-align: center;
         padding: 2rem;
-        font-family: "EB Garamond", serif;
       }
 
       .sparkle {
@@ -996,14 +998,18 @@
             alt="Rebuilding Hope: Solving American Homelessness through Work, Unity, and Innovation; by Robert Grothe. Available on Amazon." />
           <h3 class="option-title">"Shalom's design services helped me create a wonderful cover for my book!"</h3>
           <p class="option-text">- Robert G.</p>
-          <a href="https://a.co/d/dgtUL2y" class="book-link" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+          <a href="https://a.co/d/dgtUL2y" class="book-link" target="_blank" rel="noopener noreferrer"
+            >View on Amazon</a
+          >
         </div>
 
         <div class="option-box">
           <img src="img/book3.png" alt="Overcoming Cancer, by Stephanie Stolba. Available on Amazon." />
           <h3 class="option-title">"I was able to publish my e-book thanks to Shalom's expert guidance!"</h3>
           <p class="option-text">- Stephanie S.</p>
-          <a href="https://a.co/d/cqrjBVn" class="book-link" target="_blank" rel="noopener noreferrer">View on Amazon</a>
+          <a href="https://a.co/d/cqrjBVn" class="book-link" target="_blank" rel="noopener noreferrer"
+            >View on Amazon</a
+          >
         </div>
       </div>
     </section>
@@ -1020,14 +1026,14 @@
               <i class="fas fa-arrow-up"></i>
             </div>
             <h3>Upgrade</h3>
-            <p>Enhance your existing website with modern features and improved performance.</p>
+            <p>Enhance your existing website with modern features.</p>
           </div>
           <div class="option" id="publish">
             <div class="option-icon">
               <i class="fas fa-book-open"></i>
             </div>
             <h3>Publish</h3>
-            <p>Launch your new website with our comprehensive publishing services.</p>
+            <p>Launch your book with our comprehensive publishing services.</p>
           </div>
           <div class="option" id="consult">
             <div class="option-icon">
@@ -1045,8 +1051,8 @@
         <div class="contact-info">
           <h2 class="contact-title">Get in Touch</h2>
           <p class="contact-description">
-            Navigate the digital world with confidence. Expert solutions tailored to your business needs. Contact for a 20min complimentary
-            consultation.
+            Navigate the digital world with confidence. Expert solutions tailored to your business needs. Reach out
+            today for a 20 min complimentary consultation.
           </p>
           <div class="contact-details">
             <div class="contact-detail">
@@ -1054,20 +1060,28 @@
                 <i class="fas fa-envelope"></i>
               </div>
               <div>
-                <h3>Email Us</h3>
-                <p><a href="mailto:hello@digitallandscapes.com">hello@digitallandscapes.com</a></p>
+                <h3>Email</h3>
+                <p>
+                  <sup>Reach out for a free quote <i class="fas fa-arrow-right"></i></sup>
+                </p>
               </div>
             </div>
             <div class="contact-detail">
               <div class="contact-icon">
-                <i class="fas fa-phone-alt"></i>
+                <i class="fas fa-book"></i>
               </div>
               <div>
-                <h3>Call Us</h3>
-                <p><a href="tel:+15551234567">(555) 123-4567</a></p>
+                <h3>Get by Book!</h3>
+                <p>
+                  <i>
+                    <a href="https://www.blurb.com/b/12421646-child-of-wonder" target="_blank">
+                      Purchase my Artbook <i class="fas fa-globe"></i>
+                    </a>
+                  </i>
+                </p>
               </div>
             </div>
-            <div class="contact-detail">
+            <!-- <div class="contact-detail">
               <div class="contact-icon">
                 <i class="fas fa-map-marker-alt"></i>
               </div>
@@ -1075,11 +1089,20 @@
                 <h3>Visit Us</h3>
                 <p>123 Digital Way, Silicon Valley, CA</p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="contact-form-container">
-          <form id="contactForm" class="contact-form">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSf3IJQQxRiyeP-YnKLpLXqL5AKS1976gKZZ5gY_WhPTAToWxg/viewform?embedded=true"
+            width="640"
+            height="820"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            >Loading…</iframe
+          >
+          <!-- <form id="contactForm" class="contact-form">
             <div class="success-message">
               <div class="checkmark-circle">
                 <div class="background"></div>
@@ -1108,20 +1131,10 @@
               <textarea id="message" name="message" placeholder="Your Message" required></textarea>
             </div>
             <button type="submit" class="btn">Send Message</button>
-          </form>
+          </form> -->
         </div>
       </div>
     </section>
-
-    <!-- Modal for Book Previews -->
-    <div id="bookModal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="iframe-container">
-          <iframe id="bookIframe" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
 
     <footer>
       <p>&copy; 2025 Digital Landscapes. All rights reserved.</p>
@@ -1155,90 +1168,41 @@
     </style>
 
     <script>
-      // Book Modal Functionality
-      const modal = document.getElementById("bookModal");
-      const modalIframe = document.getElementById("bookIframe");
-      const closeBtn = document.querySelector(".close-modal");
-      const bookBoxes = document.querySelectorAll(".option-box[data-book-url]");
-
-      // Open modal with book preview
-      bookBoxes.forEach((box) => {
-        box.addEventListener("click", (e) => {
-          // Don't open modal if clicking on the Amazon link
-          if (e.target.closest("a")) {
-            e.stopPropagation();
-            return;
-          }
-
-          const bookUrl = box.getAttribute("data-book-url");
-          modalIframe.src = bookUrl;
-          modal.classList.add("show");
-          document.body.style.overflow = "hidden";
-        });
-      });
-
-      // Close modal
-      function closeModal() {
-        modal.classList.remove("show");
-        modalIframe.src = "";
-        document.body.style.overflow = "auto";
-      }
-
-      // Close when clicking the X button
-      closeBtn.addEventListener("click", closeModal);
-
-      // Close when clicking outside the modal content
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
-
-      // Close with Escape key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("show")) {
-          closeModal();
-        }
-      });
-
       // Contact form submission handling
-      document.getElementById("contactForm")?.addEventListener("submit", function (e) {
-        e.preventDefault();
+      // document.getElementById("contactForm")?.addEventListener("submit", function (e) {
+      //   e.preventDefault();
 
-        // Here you would typically send the form data to a server
-        // For now, we'll just show a success message
+      //   const form = this;
+      //   const submitBtn = form.querySelector('button[type="submit"]');
+      //   const originalText = submitBtn.textContent;
+      //   const successMessage = form.querySelector(".success-message");
 
-        const form = this;
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        const successMessage = form.querySelector(".success-message");
+      //   submitBtn.disabled = true;
+      //   submitBtn.textContent = "Sending...";
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending...";
+      //   // Simulate form submission
+      //   setTimeout(() => {
+      //     form.reset();
 
-        // Simulate form submission
-        setTimeout(() => {
-          form.reset();
+      //     // First remove any existing show class to reset animations
+      //     successMessage.classList.remove("show");
 
-          // First remove any existing show class to reset animations
-          successMessage.classList.remove("show");
+      //     // Force a reflow to ensure animations restart
+      //     void successMessage.offsetWidth;
 
-          // Force a reflow to ensure animations restart
-          void successMessage.offsetWidth;
+      //     // Show success message with animation
+      //     setTimeout(() => {
+      //       successMessage.classList.add("show");
 
-          // Show success message with animation
-          setTimeout(() => {
-            successMessage.classList.add("show");
-
-            // Hide success message after 4 seconds and reset form
-            setTimeout(() => {
-              successMessage.classList.remove("show");
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalText;
-            }, 4000);
-          }, 50);
-        }, 1500);
-      });
+      //       // Hide success message after 4 seconds and reset form
+      //       setTimeout(() => {
+      //         successMessage.classList.remove("show");
+      //         submitBtn.disabled = false;
+      //         submitBtn.textContent = originalText;
+      //       }, 4000);
+      //     }, 50);
+      //   }, 1500);
+      // });
 
       document.addEventListener("DOMContentLoaded", function () {
         const heroSection = document.querySelector(".hero");
